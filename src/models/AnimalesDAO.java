@@ -20,40 +20,55 @@ import org.json.simple.parser.ParseException;
  * 
  * @author Alexander Granados <alexander.granados.dev@gmail.com>
  */
-public class PersonaDAO {
+public class AnimalesDAO {
     Connect conexion;
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
 
-    public PersonaDAO() throws IOException, FileNotFoundException, ParseException {
+    public AnimalesDAO() throws IOException, FileNotFoundException, ParseException {
         this.conexion = new Connect();
     }
     
     public List listar(){
-        List<Persona> datos = new ArrayList<>();
-        String sql = "SELECT * FROM persona";
+        List<Animales> datos = new ArrayList<>();
+        String sql = "SELECT a.id, a.nombre, a.edad, a.familia, r.fecha, "
+                + "i.nombre, r2.nombre FROM animales a "
+                + "INNER JOIN registros r "
+                + "ON r.animales_id = a.id "
+                + "INNER JOIN inventarios i "
+                + "ON i.id = r.inventario_id "
+                + "INNER JOIN responsables r2 "
+                + "ON r2.usuario = i.responsable_user ORDER BY r.fecha DESC";
         try {
             con = conexion.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             
+            
+           
             while (rs.next()) {                
-                Persona p = new Persona();
-                p.setId(rs.getInt(1));
-                p.setDni(rs.getString(2));
-                p.setNombre(rs.getString(3));
+                Animales a = new Animales();
+                a.setId(rs.getInt(1));
+                a.setNombre(rs.getString(2));
+                a.setEdad(rs.getInt(3));
+                a.setFamilia(rs.getString(4));
+                a.setIngreso(rs.getDate(5));
+                a.setEspecie(rs.getString(6));
+                a.setResponsable(rs.getString(7));
                 
-                datos.add(p);
-            }
+                datos.add(a);
+            } 
+           
             
         } catch (Exception e) {
         }
         
         return datos;
     }
+    /*
     
-    public int agregar(Persona p){
+    public int agregar(Animales p){
         
         String sql = "INSERT INTO persona(dni, nombre) values(?,?)";
         
@@ -70,7 +85,7 @@ public class PersonaDAO {
         return 1;
     }
     
-    public int actualizar (Persona p){
+    public int actualizar (Animales p){
         int r = 0;
         String sql = "UPDATE persona SET dni=?, nombre=? WHERE id=?";
         
@@ -101,4 +116,5 @@ public class PersonaDAO {
         } catch (Exception e) {
         }
     }
+    */
 }

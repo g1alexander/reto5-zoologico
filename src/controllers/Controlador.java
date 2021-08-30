@@ -14,8 +14,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import models.Persona;
-import models.PersonaDAO;
+import models.Animales;
+import models.AnimalesDAO;
 import org.json.simple.parser.ParseException;
 import views.Main;
 
@@ -25,13 +25,13 @@ import views.Main;
  */
 public class Controlador implements ActionListener{
     
-    PersonaDAO dao;
-    Persona p = new Persona();
+    AnimalesDAO dao;
+    Animales p = new Animales();
     Main vista = new Main();
     DefaultTableModel modelo = new DefaultTableModel();
     
     public Controlador(Main v) throws IOException, FileNotFoundException, ParseException{
-        this.dao = new PersonaDAO();
+        this.dao = new AnimalesDAO();
         this.vista = v;
         this.vista.btnListar.addActionListener(this);
         this.vista.btnAgregar.addActionListener(this);
@@ -48,6 +48,7 @@ public class Controlador implements ActionListener{
            limpiarTabla();
            listar(vista.tablaDatos);
        }
+       /*
        if(e.getSource() == vista.btnAgregar){
            agregar();
            limpiarTabla();
@@ -81,9 +82,11 @@ public class Controlador implements ActionListener{
           limpiarTabla();
            listar(vista.tablaDatos);
        }
+       */
     }
     
-    public void eliminar(){
+    /*
+        public void eliminar(){
         int fila = vista.tablaDatos.getSelectedRow();
         if(fila == -1){
             JOptionPane.showMessageDialog(vista, "Debe seleccionar usuario");
@@ -91,17 +94,6 @@ public class Controlador implements ActionListener{
             int id = Integer.parseInt((String)vista.tablaDatos.getValueAt(fila, 0).toString());
             dao.eliminar(id);
             JOptionPane.showMessageDialog(vista, "usuario eliminado");
-        }
-    }
-    
-    
-    public void limpiarTabla(){
-        vista.txtDni.setText("");
-        vista.txtNombre.setText("");
-        for (int i = 0; i < vista.tablaDatos.getRowCount(); i++) {
-            modelo.removeRow(i);
-            
-            i -= 1;
         }
     }
     
@@ -137,18 +129,32 @@ public class Controlador implements ActionListener{
             JOptionPane.showMessageDialog(vista, "Error");
         }
     }
+    */
     
+    public void limpiarTabla(){
+        vista.txtDni.setText("");
+        vista.txtNombre.setText("");
+        for (int i = 0; i < vista.tablaDatos.getRowCount(); i++) {
+            modelo.removeRow(i);
+            
+            i -= 1;
+        }
+    }
     
     
     public void listar(JTable tabla){
     
         modelo = (DefaultTableModel)tabla.getModel();
-        List<Persona>lista = dao.listar();
-        Object[] object = new Object[3];
+        List<Animales>lista = dao.listar();
+        Object[] object = new Object[7];
         for (int i = 0; i < lista.size(); i++){
             object[0] = lista.get(i).getId();
-            object[1] = lista.get(i).getDni();
-            object[2] = lista.get(i).getNombre();
+            object[1] = lista.get(i).getNombre();
+            object[2] = lista.get(i).getEdad();
+            object[3] = lista.get(i).getFamilia();
+            object[4] = lista.get(i).getIngreso();
+            object[5] = lista.get(i).getEspecie();
+            object[6] = lista.get(i).getResponsable();
             modelo.addRow(object);
         }
         

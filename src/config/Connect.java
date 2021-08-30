@@ -55,6 +55,7 @@ public class Connect {
     }
     
     public Connection getConnection(){
+        System.out.println("connect");
         return con;
     }
 }
