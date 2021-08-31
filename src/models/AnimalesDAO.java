@@ -30,6 +30,27 @@ public class AnimalesDAO {
         this.conexion = new Connect();
     }
     
+    public int listarUltimo(){
+        String sql = "SELECT id FROM animales a ORDER BY id DESC LIMIT 1";
+        
+        int id_animal = 0;
+        try {
+            con = conexion.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+ 
+            while (rs.next()) {                
+                id_animal = rs.getInt(1);
+
+            } 
+     
+        } catch (Exception e) {
+        }
+        
+        return id_animal;
+        
+    }
+    
     public List listar(){
         List<Animales> datos = new ArrayList<>();
         String sql = "SELECT a.id, a.nombre, a.edad, a.familia, r.fecha, "
@@ -66,17 +87,17 @@ public class AnimalesDAO {
         
         return datos;
     }
-    /*
     
-    public int agregar(Animales p){
+    public int agregar(Animales a){
         
-        String sql = "INSERT INTO persona(dni, nombre) values(?,?)";
+        String sql = "INSERT INTO animales(nombre, edad, familia) values(?,?,?)";
         
         try {
             con = conexion.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, p.getDni());
-            ps.setString(2, p.getNombre());
+            ps.setString(1, a.getNombre());
+            ps.setInt(2, a.getEdad());
+            ps.setString(3, a.getFamilia());
             ps.executeUpdate();
             
         } catch (Exception e) {
@@ -84,7 +105,8 @@ public class AnimalesDAO {
         
         return 1;
     }
-    
+    /*
+ 
     public int actualizar (Animales p){
         int r = 0;
         String sql = "UPDATE persona SET dni=?, nombre=? WHERE id=?";
@@ -105,9 +127,10 @@ public class AnimalesDAO {
         return r;
     }
     
+    */
     public void eliminar (int id){
     
-        String sql = "DELETE FROM persona WHERE id=" +id;
+        String sql = "DELETE FROM animales WHERE id=" +id;
         
         try {
             con = conexion.getConnection();
@@ -116,5 +139,4 @@ public class AnimalesDAO {
         } catch (Exception e) {
         }
     }
-    */
 }
