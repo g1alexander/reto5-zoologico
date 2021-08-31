@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * controlador que se encarga de interactuar con los modelos y la vista (interfaz grafica)
  */
 
 package controllers;
@@ -37,6 +35,8 @@ public class Controlador implements ActionListener{
     DefaultTableModel modelo = new DefaultTableModel();
     
     public Controlador(Main v) throws IOException, FileNotFoundException, ParseException{
+        // montado de objectos AnimalesDAO y RegistrosDAO para interactuar con la db
+        // montado de referencia de la interfaz grafica y inicializar eventos de "btn"
         this.animalesDao = new AnimalesDAO();
         this.registroDao = new RegistrosDAO();
         this.vista = v;
@@ -46,21 +46,26 @@ public class Controlador implements ActionListener{
         this.vista.btnEditar.addActionListener(this);
         this.vista.btnEliminar.addActionListener(this);
         
+        //lista la tabla al momento de cargar el proyecto
         listar(vista.tablaDatos);
     }
 
+    // capturar eventos de la interfaz grafica
     @Override
     public void actionPerformed(ActionEvent e) {
        if(e.getSource() == vista.btnListar){
+           // evento del btn listar
            limpiarTabla();
            listar(vista.tablaDatos);
        }
        if(e.getSource() == vista.btnEliminar){
+          // evento del btn eliminar
           eliminar();
           limpiarTabla();
            listar(vista.tablaDatos);
        }
        if(e.getSource() == vista.btnAgregar){
+          // evento del btn agregar
            try {
                agregar();
            } catch (java.text.ParseException ex) {
@@ -69,23 +74,45 @@ public class Controlador implements ActionListener{
            limpiarTabla();
            listar(vista.tablaDatos);
        }
-       /*
-       
        
        if(e.getSource() == vista.btnModificar){
+           // evento del btn modificar (captura los datos de la tabla y 
+           // los pone en los inputs)
            int fila = vista.tablaDatos.getSelectedRow();
            
            if(fila == -1){
                JOptionPane.showMessageDialog(vista, "Debe seleccionar fila");
            }else{
                
-               String dni = (String)vista.tablaDatos.getValueAt(fila, 1);
-               String nombre = (String)vista.tablaDatos.getValueAt(fila, 2);
+               String nombre = (String)vista.tablaDatos.getValueAt(fila, 1);
+               String edad = (String)vista.tablaDatos.getValueAt(fila, 2).toString();
+               String familia = (String)vista.tablaDatos.getValueAt(fila, 3);
+               String ingreso = (String)vista.tablaDatos.getValueAt(fila, 4).toString();
+               String especieTabla = (String)vista.tablaDatos.getValueAt(fila, 5);
+               int especie = 0;
                
-               vista.txtDni.setText(dni);
                vista.txtNombre.setText(nombre);
+               vista.txtEdad.setText(edad);
+               vista.txtFamilia.setText(familia);
+               vista.txtFecha.setText(ingreso);
+              
+               
+               switch(especieTabla){
+                case "Otros": especie = 0;
+                    break;
+                case "Animales marinos": especie = 1;
+                    break;
+                case "Animales terrestres": especie = 2;
+                    break;
+                case "Aracnidos": especie = 3;
+                    break;
+               }
+               
+                vista.boxEspecie.setSelectedIndex(especie); //funciona :D
            }
        }
+       /*
+       
        
        if(e.getSource() == vista.btnEditar){
            editar();
@@ -123,7 +150,13 @@ public class Controlador implements ActionListener{
     
     */
     
+    
+    // metodos que se llaman en el metodo actionPerformed
+    
+    
     public void limpiarTabla(){
+        // limpia la tabla para evitar duplicacion cada vez que hay peticion
+        // a la db
         vista.txtEdad.setText("");
         vista.txtNombre.setText("");
         vista.txtFamilia.setText("");
@@ -137,7 +170,8 @@ public class Controlador implements ActionListener{
     
     
     public void listar(JTable tabla){
-    
+        // monta la lista de animales en la tabla de la interfaz grafica
+        
         modelo = (DefaultTableModel)tabla.getModel();
         List<Animales>lista = animalesDao.listar();
         Object[] object = new Object[7];
@@ -156,6 +190,8 @@ public class Controlador implements ActionListener{
     }
     
     public void agregar() throws java.text.ParseException{
+        // agrega un animal extrayendo los datos del formulario
+        
         String nombre = vista.txtNombre.getText();
         int edad = Integer.parseInt(vista.txtEdad.getText());
         String familia = vista.txtFamilia.getText();
@@ -199,6 +235,7 @@ public class Controlador implements ActionListener{
     }
     
     public void eliminar(){
+        // elimina un campo dependiendo de la fila seleccionada
         int fila = vista.tablaDatos.getSelectedRow();
         if(fila == -1){
             JOptionPane.showMessageDialog(vista, "Debe seleccionar un animal");

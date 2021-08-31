@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Manejo de consultas sql para tabla animales
  */
 
 package models;
@@ -27,10 +25,12 @@ public class AnimalesDAO {
     ResultSet rs;
 
     public AnimalesDAO() throws IOException, FileNotFoundException, ParseException {
+        //montado de conexion db
         this.conexion = new Connect();
     }
     
     public int listarUltimo(){
+        // retorna ultimo campo de la tabla animales
         String sql = "SELECT id FROM animales a ORDER BY id DESC LIMIT 1";
         
         int id_animal = 0;
@@ -52,6 +52,8 @@ public class AnimalesDAO {
     }
     
     public List listar(){
+        // retorna lista de tabla animales con datos 
+        //adicionales de otra tablas(ingreso, inventario, responsable)
         List<Animales> datos = new ArrayList<>();
         String sql = "SELECT a.id, a.nombre, a.edad, a.familia, r.fecha, "
                 + "i.nombre, r2.nombre FROM animales a "
@@ -89,6 +91,7 @@ public class AnimalesDAO {
     }
     
     public int agregar(Animales a){
+        //retorna 1 si se inserta datos nuevos a la tabla animales
         
         String sql = "INSERT INTO animales(nombre, edad, familia) values(?,?,?)";
         
@@ -129,6 +132,7 @@ public class AnimalesDAO {
     
     */
     public void eliminar (int id){
+        // elimina un campo de la tabla animales dependiendo del id recibido
     
         String sql = "DELETE FROM animales WHERE id=" +id;
         

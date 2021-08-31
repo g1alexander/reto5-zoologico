@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Manejo de consultas sql para tabla intermedia (registros)
  */
 
 package models;
@@ -25,11 +23,12 @@ public class RegistrosDAO {
     ResultSet rs;
 
     public RegistrosDAO() throws IOException, FileNotFoundException, ParseException {
+        // montado de conexion db
         this.conexion = new Connect();
     }
     
     public int agregar(Registros r){
-        
+        // retorna 1 si se inserta un campo en la tabla registros
         String sql = "INSERT INTO registros(fecha, animales_id, inventario_id) values(?,?,?)";
         
         try {
@@ -47,6 +46,7 @@ public class RegistrosDAO {
     }
     
     public void eliminar (int animales_id){
+        // elimina un campo de la tabla registros dependiendo del id recibido
     
         String sql = "DELETE FROM registros WHERE animales_id=" +animales_id;
         
