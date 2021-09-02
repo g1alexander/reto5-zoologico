@@ -51,7 +51,6 @@ public class Main extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        btnListar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDatos = new javax.swing.JTable();
@@ -182,28 +181,19 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnListar.setText("Listar");
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(208, 208, 208)
                 .addComponent(btnAgregar)
-                .addGap(27, 27, 27)
+                .addGap(46, 46, 46)
                 .addComponent(btnModificar)
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addComponent(btnEditar)
-                .addGap(28, 28, 28)
+                .addGap(53, 53, 53)
                 .addComponent(btnEliminar)
-                .addGap(30, 30, 30)
-                .addComponent(btnListar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -214,8 +204,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(btnAgregar)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
-                    .addComponent(btnEditar)
-                    .addComponent(btnListar))
+                    .addComponent(btnEditar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -299,10 +288,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnListarActionPerformed
-
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -329,7 +314,6 @@ public class Main extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnEditar;
     public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnListar;
     public javax.swing.JButton btnModificar;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;

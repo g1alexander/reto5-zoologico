@@ -111,6 +111,9 @@ public class AnimalesDAO {
     
  
     public int actualizar (Animales a){
+        // actualiza un campo de la tabla animales y retorna 1 si se hizo
+        // correctamente
+        
         int r = 0;
         String sql = "UPDATE animales SET nombre=?, edad=?, familia=? WHERE id=?";
         

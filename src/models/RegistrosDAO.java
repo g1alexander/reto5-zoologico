@@ -47,6 +47,9 @@ public class RegistrosDAO {
     
     
     public int actualizar (Registros registro){
+        // actualiza un campo de la tabla regitro y retorna 1 si se hizo
+        // correctamente
+        
         int r = 0;
         String sql = "UPDATE registros SET fecha=?, inventario_id=? WHERE animales_id = ?";
         

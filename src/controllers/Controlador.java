@@ -40,7 +40,6 @@ public class Controlador implements ActionListener{
         this.animalesDao = new AnimalesDAO();
         this.registroDao = new RegistrosDAO();
         this.vista = v;
-        this.vista.btnListar.addActionListener(this);
         this.vista.btnAgregar.addActionListener(this);
         this.vista.btnModificar.addActionListener(this);
         this.vista.btnEditar.addActionListener(this);
@@ -53,11 +52,7 @@ public class Controlador implements ActionListener{
     // capturar eventos de la interfaz grafica
     @Override
     public void actionPerformed(ActionEvent e) {
-       if(e.getSource() == vista.btnListar){
-           // evento del btn listar
-           limpiarTabla();
-           listar(vista.tablaDatos);
-       }
+
        if(e.getSource() == vista.btnEliminar){
           // evento del btn eliminar
           eliminar();
@@ -111,25 +106,24 @@ public class Controlador implements ActionListener{
                 vista.boxEspecie.setSelectedIndex(especie); //funciona :D
            }
        }
-       
-       
-       
+        
        if(e.getSource() == vista.btnEditar){
            editar();
            limpiarTabla();
            listar(vista.tablaDatos);
        }
        
-       
-       
-       
     }
     
-    
-       
-    
+
+    // metodos que se llaman en el metodo actionPerformed
     
     public void editar(){
+        // ejecuta la atualizacion del animal seleccionado
+        // la actualizacion la hace a las tablas animales y registro
+        // atraves del los modelos DAO de animale y registro
+        
+        
         int fila = vista.tablaDatos.getSelectedRow();
         int id = (int)vista.tablaDatos.getValueAt(fila, 0);
 
@@ -168,12 +162,6 @@ public class Controlador implements ActionListener{
             JOptionPane.showMessageDialog(vista, "Error");
         }
     }
-    
-    
-    
-    
-    
-    // metodos que se llaman en el metodo actionPerformed
     
     
     public void limpiarTabla(){
