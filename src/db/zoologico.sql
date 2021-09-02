@@ -30,7 +30,7 @@ CREATE TABLE `animales` (
   `marino` tinyint(1) DEFAULT NULL,
   `patas` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `animales` (
 
 LOCK TABLES `animales` WRITE;
 /*!40000 ALTER TABLE `animales` DISABLE KEYS */;
-INSERT INTO `animales` VALUES (1,'Timon',12,'Suricata',0,NULL),(2,'Pumba',9,'Jabali',0,NULL),(3,'Simba',3,'Leon',0,NULL),(6,'Nemo',4,'Pez',1,NULL),(7,'Itzi Bitzi',10,'Aracnido',NULL,8),(8,'Igor',25,'Escarabajo',NULL,6),(11,'Footy',100,'Mirapodo',NULL,1000),(13,'sadad',21,'sadad',NULL,NULL),(14,'prueba1',12,'asdasdas',NULL,NULL),(15,'prueba3',12,'asdad',NULL,NULL),(16,'dsadsd',400,'hola',NULL,NULL),(17,'prueba5',1000,'hojoj',NULL,NULL);
+INSERT INTO `animales` VALUES (1,'Timon',12,'Suricata',0,NULL),(2,'Pumba',9,'Jabali',0,NULL),(3,'Simba',3,'Leon',0,NULL),(4,'Dory',2,'Pez',1,NULL),(5,'Marlin',3,'Pez',1,NULL),(6,'Nemo',1,'Pez',1,NULL),(7,'Itzi Bitzi',10,'Aracnido',NULL,8),(8,'Igor',25,'Escarabajo',NULL,6),(9,'Tenazas',100,'Langosta',NULL,10),(10,'Sr Cangrejo',1000,'Cangrejo',NULL,8),(11,'Footy',100,'Mirapodo',NULL,1000);
 /*!40000 ALTER TABLE `animales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `registros` (
   KEY `registros_FK` (`animales_id`),
   CONSTRAINT `registros_FK` FOREIGN KEY (`animales_id`) REFERENCES `animales` (`id`),
   CONSTRAINT `registros_FK_1` FOREIGN KEY (`inventario_id`) REFERENCES `inventarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `registros` (
 
 LOCK TABLES `registros` WRITE;
 /*!40000 ALTER TABLE `registros` DISABLE KEYS */;
-INSERT INTO `registros` VALUES (4,'2010-12-15',2,2),(5,'2010-12-15',1,2),(6,'2010-12-15',7,2),(7,'2010-12-15',3,2),(8,'2010-12-19',6,1),(9,'2011-12-15',7,3),(11,'2020-11-11',15,1),(12,'2020-11-11',16,4),(13,'2022-08-31',17,1);
+INSERT INTO `registros` VALUES (1,'2010-02-15',9,1),(2,'2010-02-15',10,1),(3,'2010-12-13',4,1),(4,'2010-12-15',2,2),(5,'2010-12-15',1,2),(6,'2010-12-15',7,2),(7,'2010-12-15',3,2),(8,'2010-12-19',6,1),(9,'2011-12-15',7,3),(10,'2013-01-15',11,4),(11,'2015-12-15',8,4);
 /*!40000 ALTER TABLE `registros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-31 18:06:42
+-- Dump completed on 2021-09-02 12:10:51
