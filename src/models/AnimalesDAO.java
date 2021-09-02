@@ -108,18 +108,20 @@ public class AnimalesDAO {
         
         return 1;
     }
-    /*
+    
  
-    public int actualizar (Animales p){
+    public int actualizar (Animales a){
         int r = 0;
-        String sql = "UPDATE persona SET dni=?, nombre=? WHERE id=?";
+        String sql = "UPDATE animales SET nombre=?, edad=?, familia=? WHERE id=?";
         
         try {
+            
             con = conexion.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, p.getDni());
-            ps.setString(2, p.getNombre());
-            ps.setInt(3, p.getId());
+            ps.setString(1, a.getNombre());
+            ps.setInt(2, a.getEdad());
+            ps.setString(3, a.getFamilia());
+            ps.setInt(4, a.getId());
             r = ps.executeUpdate();
             
            r = (r == 1) ? 1 : 0;
@@ -130,7 +132,7 @@ public class AnimalesDAO {
         return r;
     }
     
-    */
+    
     public void eliminar (int id){
         // elimina un campo de la tabla animales dependiendo del id recibido
     

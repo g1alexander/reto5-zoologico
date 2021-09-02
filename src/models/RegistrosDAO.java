@@ -45,6 +45,27 @@ public class RegistrosDAO {
         return 1;
     }
     
+    
+    public int actualizar (Registros registro){
+        int r = 0;
+        String sql = "UPDATE registros SET fecha=?, inventario_id=? WHERE animales_id = ?";
+        
+        try {
+            con = conexion.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, registro.getFecha());
+            ps.setInt(2, registro.getInventario_id());
+            ps.setInt(3, registro.getAnimales_id());
+            r = ps.executeUpdate();
+            
+           r = (r == 1) ? 1 : 0;
+        
+        } catch (Exception e) {
+        }
+        
+        return r;
+    }
+    
     public void eliminar (int animales_id){
         // elimina un campo de la tabla registros dependiendo del id recibido
     

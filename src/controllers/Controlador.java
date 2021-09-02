@@ -111,7 +111,7 @@ public class Controlador implements ActionListener{
                 vista.boxEspecie.setSelectedIndex(especie); //funciona :D
            }
        }
-       /*
+       
        
        
        if(e.getSource() == vista.btnEditar){
@@ -122,33 +122,55 @@ public class Controlador implements ActionListener{
        
        
        
-       */
+       
     }
     
-    /*
+    
        
     
     
     public void editar(){
         int fila = vista.tablaDatos.getSelectedRow();
         int id = (int)vista.tablaDatos.getValueAt(fila, 0);
-        String dni = vista.txtDni.getText();
+
         String nombre = vista.txtNombre.getText();
+        int edad = Integer.parseInt(vista.txtEdad.getText());
+        String familia = vista.txtFamilia.getText();
+        String fecha = vista.txtFecha.getText();
+        String especie_box = (String)vista.boxEspecie.getSelectedItem();
         
-        p.setId(id);
-        p.setDni(dni);
-        p.setNombre(nombre);
+        int especie = 1;
+        switch(especie_box){
+            case "Otros": especie = 4;
+                break;
+            case "Animales marinos": especie = 1;
+                break;
+            case "Animales terrestres": especie = 2;
+                break;
+            case "Aracnidos": especie = 3;
+                break;
+        }
         
-        int r = dao.actualizar(p);
-        if(r == 1){
-            JOptionPane.showMessageDialog(vista, "El usuario se actualizo");
+        a.setId(id);
+        a.setEdad(edad);
+        a.setFamilia(familia);
+        a.setNombre(nombre);
+        r.setFecha(fecha);
+        r.setAnimales_id(id);
+        r.setInventario_id(especie);
+        
+        int resp_animal = animalesDao.actualizar(a);
+        int resp_registro = registroDao.actualizar(r);
+        
+        if(resp_animal == 1 && resp_registro == 1){
+            JOptionPane.showMessageDialog(vista, "El animal se actualizo");
         }else{
             JOptionPane.showMessageDialog(vista, "Error");
         }
     }
     
     
-    */
+    
     
     
     // metodos que se llaman en el metodo actionPerformed
