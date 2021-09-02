@@ -96,7 +96,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        boxEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Otros", "Animales marinos", "Animales terrestres", "Aracnidos" }));
+        boxEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Animales marinos", "Animales terrestres", "Aracnidos", "Otros" }));
 
         jLabel6.setText("INGRESO (Fecha):");
 

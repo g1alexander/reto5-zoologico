@@ -93,13 +93,13 @@ public class Controlador implements ActionListener{
               
                
                switch(especieTabla){
-                case "Otros": especie = 0;
+                case "Animales marinos": especie = 0;
                     break;
-                case "Animales marinos": especie = 1;
+                case "Animales terrestres": especie = 1;
                     break;
-                case "Animales terrestres": especie = 2;
+                case "Aracnidos": especie = 2;
                     break;
-                case "Aracnidos": especie = 3;
+                case "Otros": especie = 3;
                     break;
                }
                

@@ -202,10 +202,10 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Otros"/>
-                <StringItem index="1" value="Animales marinos"/>
-                <StringItem index="2" value="Animales terrestres"/>
-                <StringItem index="3" value="Aracnidos"/>
+                <StringItem index="0" value="Animales marinos"/>
+                <StringItem index="1" value="Animales terrestres"/>
+                <StringItem index="2" value="Aracnidos"/>
+                <StringItem index="3" value="Otros"/>
               </StringArray>
             </Property>
           </Properties>
