@@ -9,8 +9,8 @@
 
 ## Authors
 
-- [Vanessa](https://www.github.com/)
-- [Alexander](https://www.github.com/g1alexander)
+- [Vanessa Martinez](https://github.com/VannessaMartinez)
+- [Alexander Granados](https://www.github.com/g1alexander)
 
 ## Configuración
 
