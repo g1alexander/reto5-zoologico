@@ -73,7 +73,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel1.setText("<html><b> BIENVENIDO AL INVENTARIO DEL ZOOLOGICO MISIONTIC  </b></html>");
 

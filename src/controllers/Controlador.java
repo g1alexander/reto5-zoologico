@@ -209,7 +209,7 @@ public class Controlador implements ActionListener{
         String ingreso = vista.txtFecha.getText();
         
         String especie = (String) vista.boxEspecie.getSelectedItem();
-        int especie_id = 4;
+        int especie_id = 1;
         
         a.setNombre(nombre);
         a.setEdad(edad);
@@ -227,7 +227,7 @@ public class Controlador implements ActionListener{
                 break;
             case "Animales marinos": especie_id = 1;
                 break;
-            case "Animales terrestes": especie_id = 2;
+            case "Animales terrestres": especie_id = 2;
                 break;
             case "Aracnidos": especie_id = 3;
                 break;
